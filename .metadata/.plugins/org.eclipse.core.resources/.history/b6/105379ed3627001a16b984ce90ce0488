@@ -1,0 +1,23 @@
+package gui;
+
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+public class TestGUI {
+
+	public static void main(String[] args) {
+
+		JFrame f= new JFrame("Advanced File Comparator");  
+		JTextField t1,t2;  
+		t1=new JTextField();  
+		t1.setBounds(160,50, 800,30);  
+		t2=new JTextField();  
+		t2.setBounds(160,90, 800,30);  
+		f.add(t1); f.add(t2);  
+		f.setSize(1000,800);  
+		f.setLayout(null);  
+		f.setVisible(true); 
+
+	}
+
+}

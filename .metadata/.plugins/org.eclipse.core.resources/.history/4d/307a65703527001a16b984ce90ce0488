@@ -1,0 +1,11 @@
+package gui;
+
+public class ComparisonHelperClass {
+
+	public static void ComparisonGUI() {
+		
+		JFrame f=new JFrame();
+		
+	}
+	
+}

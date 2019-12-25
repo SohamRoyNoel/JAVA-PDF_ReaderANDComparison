@@ -1,0 +1,60 @@
+package gui;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class TestGUI {
+
+	public static void main(String[] args) {
+
+		JFrame f= new JFrame("Advanced File Comparator");  
+		JTextField t1,t2;
+		JLabel l1,l2, l3; 
+
+	    l1=new JLabel("Enter Source Folder Path");  
+	    l1.setBounds(10,50, 600,30); 
+		t1=new JTextField();  
+		t1.setBounds(160,50, 800,30);
+		
+		l2=new JLabel("Enter Target Folder Path");  
+	    l2.setBounds(10,90, 600,30);
+		t2=new JTextField();  
+		t2.setBounds(160,90, 800,30); 
+		
+		
+		l3=new JLabel("Choose Comparison Type");
+		l3.setBounds(10,135, 600,30);
+		JCheckBox checkBox1 = new JCheckBox("BAT File Comparison");  
+        checkBox1.setBounds(10,160, 300,50);  
+        JCheckBox checkBox2 = new JCheckBox("DOCX File Comparison");  
+        checkBox2.setBounds(10, 195, 300,50); 
+        JCheckBox checkBox3 = new JCheckBox("CSV File Comparison");  
+        checkBox3.setBounds(10,230, 300,50);
+        JCheckBox checkBox4 = new JCheckBox("PDF File Comparison");  
+        checkBox4.setBounds(10,265, 300,50);
+        JCheckBox checkBox5 = new JCheckBox("TXT File Comparison");  
+        checkBox5.setBounds(10,300, 300,50);
+        JCheckBox checkBox6 = new JCheckBox("DAT File Comparison");  
+        checkBox6.setBounds(10,340, 300,50);
+        JCheckBox checkBox7 = new JCheckBox("ALL Types Comparison", true);  
+        checkBox7.setBounds(10,380, 300,50);
+        
+        JButton b=new JButton("Run Comparison");  
+        b.setBounds(160,450,600,30);
+		
+		f.add(t1); f.add(t2);  f.add(l1); f.add(l2); f.add(l3); 
+		f.add(checkBox1); f.add(checkBox2);
+		f.add(checkBox3); f.add(checkBox4);
+		f.add(checkBox5); f.add(checkBox6); f.add(checkBox7); 
+		f.add(b);
+		
+		f.setSize(1000,800);  
+		f.setLayout(null);  
+		f.setVisible(true); 
+
+	}
+
+}
