@@ -1,0 +1,30 @@
+package main;
+
+import java.io.File;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.util.PDFTextStripper;
+import org.apache.pdfbox.util.PDFTextStripperByArea;
+
+public class PdfReader {
+
+	public static void main(String[] args) {
+		
+		try{
+			PDDocument document = null; 
+			document = PDDocument.load(new File("E:\\Jars\\PDFBox\\TESTPDF.pdf"));
+			document.getClass();
+			if( !document.isEncrypted() ){
+			    PDFTextStripperByArea stripper = new PDFTextStripperByArea();
+			    stripper.setSortByPosition( true );
+			    PDFTextStripper Tstripper = new PDFTextStripper();
+			    String st = Tstripper.getText(document);
+			    System.out.println(st);
+			}
+			}catch(Exception e){
+			    e.printStackTrace();
+			}
+
+	}
+
+}

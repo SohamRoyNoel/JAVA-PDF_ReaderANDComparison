@@ -1,0 +1,57 @@
+package main;
+
+import java.io.File;
+import java.util.List;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.util.PDFTextStripper;
+import org.apache.pdfbox.util.PDFTextStripperByArea;
+
+public class PdfReader {
+
+	public static void main(String[] args) {
+
+//		try{
+//			PDDocument document = null; 
+//			document = PDDocument.load(new File("E:\\Jars\\PDFBox\\SourceTEST.pdf"));
+//			document.getClass();
+//			if( !document.isEncrypted() ){
+//				PDFTextStripperByArea stripper = new PDFTextStripperByArea();
+//				stripper.setSortByPosition( true );
+//				PDFTextStripper Tstripper = new PDFTextStripper();
+//				String st = Tstripper.getText(document);
+//				System.out.println(st);
+//
+//
+//			}
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
+		
+		try {
+
+            File pdfFile = new File("E:\\\\Jars\\\\PDFBox\\\\SourceTEST.pdf");
+            PDDocument pdDocument = PDDocument.load(pdfFile);
+
+
+            List allPages = pdDocument.getDocumentCatalog().getAllPages();
+            for (int i = 1; i <= allPages.size(); i++) {
+                PDFTextStripper stripper = new PDFTextStripper();
+                stripper.setStartPage(i);
+                stripper.setEndPage(i);
+                String text = stripper.getText(pdDocument).replaceAll("visiblespace", " ");
+
+                String[] lines = text.split("\n");
+                System.out.println("Lines : " +lines);
+                System.out.println("Page Number " + i + " lines " + lines.length);
+            }
+
+        } catch(Exception e){
+            System.out.print(e);
+        }
+
+
+	}
+
+}
+// E:\\Jars\\PDFBox\\SourceTEST.pdf

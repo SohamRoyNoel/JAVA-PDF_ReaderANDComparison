@@ -1,0 +1,50 @@
+package main;
+
+import java.io.File;
+import java.util.List;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.util.PDFTextStripper;
+
+public class PDFComparison {
+
+	public static void PDFComparater(String srcFile = "null", String tgtFile) {
+		try {
+
+			// Get PDFs
+			File Src_pdfFile = new File(srcFile);
+			File tgt_pdfFile1 = new File(tgtFile);
+
+			// Load PDFs
+			PDDocument pdDocument_SRC = PDDocument.load(Src_pdfFile);
+			PDDocument pdDocument_TGT = PDDocument.load(tgt_pdfFile1);
+
+			// Get the number of pages
+			List allPages_SRC = pdDocument_SRC.getDocumentCatalog().getAllPages();
+			List allPages_TGT = pdDocument_TGT.getDocumentCatalog().getAllPages();
+
+			for (int i = 1; i <= Math.min(allPages_SRC.size(), allPages_TGT.size()); i++) {
+				PDFTextStripper stripper = new PDFTextStripper();
+				stripper.setStartPage(i);
+				stripper.setEndPage(i);
+				String text_SRC = stripper.getText(pdDocument_SRC).replaceAll("visiblespace", " ");
+				String text_TGT = stripper.getText(pdDocument_TGT).replaceAll("visiblespace", " ");
+
+				String[] lines_SRC = text_SRC.split("\n");
+				String[] lines_TGT = text_TGT.split("\n");
+				
+				for (int j = 0; j < lines_SRC.length; j++) {
+					System.out.println(lines_SRC[j] + System.lineSeparator());
+					System.out.println(lines_TGT[j] + System.lineSeparator());
+					System.out.println("---------------------------------------------------");
+				}
+			}
+			
+			
+
+		} catch(Exception e){
+			System.out.print(e);
+		}
+	}
+
+}

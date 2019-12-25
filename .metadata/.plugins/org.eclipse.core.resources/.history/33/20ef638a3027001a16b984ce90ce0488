@@ -1,0 +1,21 @@
+package main;
+
+import java.io.File;
+import java.io.StringWriter;
+import java.util.List;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.util.PDFTextStripper;
+import org.apache.pdfbox.util.PDFTextStripperByArea;
+
+public class PdfReader {
+
+	public static void main(String[] args) {
+		
+		String src = "E:\\Jars\\PDFBox\\SourceTEST.pdf"; 
+		PDFComparison.PDFComparater(srcFile, tgtFile);
+
+	}
+
+}
+// 
